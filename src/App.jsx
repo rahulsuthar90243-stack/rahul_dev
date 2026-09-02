@@ -8,6 +8,7 @@ import Testimonials from "./section/testimonials"
 import Contact from "./section/Contact"
 import ParticlesBackground from "./components/ParticlesBackground"
 import CustomCursor from "./components/CustomCursor"
+import OverlayMenu from "./components/OverlayMenu"
 
 
 
@@ -17,7 +18,7 @@ function App() {
   <div className="relative gradient">
     <ParticlesBackground/>
     <CustomCursor/>
-  <Navbar/>
+    <Navbar/>
   <Home/>
   <About/>
   <Skills/>
