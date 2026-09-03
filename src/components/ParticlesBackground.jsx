@@ -79,7 +79,7 @@ function ParticlesBackground() {
       window.removeEventListener("resize", handleResize);
     }
 
-  })
+  }, [])
 
   return (
     
