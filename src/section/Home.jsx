@@ -155,9 +155,10 @@ function Home() {
             </a>
           </motion.div>
 
-          <div className="mt-10 flex - gap-5 text-2xl md:text-3xl justify-center lg:justify-start">
-            {socials.map(({ Icon, label, href }) => (
+          <div className="mt-10 flex gap-5 text-2xl md:text-3xl justify-center lg:justify-start">
+            {socials.map(({ Icon, href }) => (
               <motion.a
+                key={href}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
