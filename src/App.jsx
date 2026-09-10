@@ -8,12 +8,13 @@ import Contact from "./section/Contact"
 import CustomCursor from "./components/CustomCursor"
 import { useState } from "react"
 import IntroAnimation from "./components/IntroAnimation"
+import GitandLettcdoePage from "./section/GitandLettcdoePage"
 
 
 
 function App() {
 
-  const [introDone, setIntroDone] = useState(false);
+  const [introDone, setIntroDone] = useState(true);
 
   return (
 
@@ -24,6 +25,7 @@ function App() {
     <CustomCursor/>
   <Home/>
   <About/>
+  <GitandLettcdoePage/>
   <Skills/>
   <Projects/>
   <Experience/>
