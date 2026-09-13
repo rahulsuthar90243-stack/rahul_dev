@@ -29,6 +29,12 @@ const profileQuery = `
 async function leetcodeData(request, response) {
 const findCount = (items = [], difficulty) => items.find((item) => item.difficulty === difficulty)?.count ?? null;
 
+const username = String(request.query.username || process.env.LEETCODE_USERNAME || "").trim();
+
+  if (!username) {
+    return response.status(400).json({ error: "Set LEETCODE_USERNAME or pass ?username=..." });
+  }
+
 function toDifficulty(submissions, questions, name, color) {
   const solved = findCount(submissions, name);
   const total = findCount(questions, name);
@@ -63,13 +69,6 @@ function normaliseLeetCodeResponse(body) {
     ],
   };
 }
-
-
-const username = String(request.query.username || process.env.LEETCODE_USERNAME || "").trim();
-
-  if (!username) {
-    return response.status(400).json({ error: "Set LEETCODE_USERNAME or pass ?username=..." });
-  }
 
   try {
     const leetcodeResponse = await fetch(leetcodeEndpoint, {
