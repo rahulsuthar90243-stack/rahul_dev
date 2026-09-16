@@ -34,19 +34,19 @@ function Projects() {
       {
         title: "AI Tools Directory",
         link: "https://ai-hunt-delta.vercel.app/",
-        bgColor: "#3884d3",
+        bgColor: "#020024",
         image: isMobile ? img1 : photo1,
       },
        {
-        title: "snake-game",
-        link: "https://ai-hunt-delta.vercel.app/",
-        bgColor: "#0dad3d",
+        title: "MegaPost",
+        link: "https://github.com/rahulsuthar90243-stack/MegaPost",
+        bgColor: "#dc9317",
         image: isMobile ? img2 : photo2,
       },
        {
-        title: "Kanban-Board",
-        link: "https://ai-hunt-delta.vercel.app/",
-        bgColor: "#dc9317",
+        title: "APIForge ",
+        link: "https://github.com/rahulsuthar90243-stack/backend_application",
+        bgColor: "#01661C",
         image: isMobile ? img3 : photo3
       }
     ],
@@ -60,10 +60,16 @@ function Projects() {
 
   const thresholds = projects.map((_,i) => (i+1)/projects.length)
   const [activeIndex, setActiveIndex] = useState(0);
+  const activeIndexRef = useRef(0);
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     const idx = thresholds.findIndex((t) => v <= t);
-    setActiveIndex(idx === -1 ? thresholds.length -1 : idx)
+    const nextIndex = idx === -1 ? thresholds.length -1 : idx;
+
+    if (nextIndex !== activeIndexRef.current) {
+      activeIndexRef.current = nextIndex;
+      setActiveIndex(nextIndex);
+    }
   });
   const activeProject = projects[activeIndex]
 
@@ -72,7 +78,7 @@ function Projects() {
     ref={sceneRef}
     className='relative text-white'
     style={{
-      height : `${100*projects.length}vh`,
+      height : `${(isMobile ? 85 : 100)*projects.length}vh`,
       backgroundColor : activeProject.bgColor,
       transition : "background-color 400ms ease"
     }}
@@ -83,7 +89,7 @@ function Projects() {
           My Work
         </h2>
 
-        <div className='relative flex w-full flex-1 items-center justify-center px-5 sm:px-10'>
+        <div className='relative flex min-h-0 w-full flex-1 items-center justify-center px-5 sm:px-10'>
          {projects.map((project, idx) => (
           <div key={project.title}
           className={`absolute left-1/2 top-1/2 w-full max-w-[1100px] -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${activeIndex === idx ? "z-20 opacity-100" : "z-0 opacity-0"}`}
@@ -105,7 +111,7 @@ function Projects() {
           )}
          </AnimatePresence>
 
-         <div className={`relative w-full overflow-hidden rounded-md bg-black/20 shadow-[0_24px_45px_-18px_rgba(0,0,0,0.85)] sm:rounded-lg ${isMobile ? "aspect-[9/16] max-w-[430px]" : "aspect-video"}`}
+         <div className={`relative w-full overflow-hidden rounded-md bg-black/20 shadow-[0_24px_45px_-18px_rgba(0,0,0,0.85)] sm:rounded-lg ${isMobile ? "aspect-[4/7] max-h-[75vh] max-w-[430px]" : "aspect-video"}`}
                          style={{zIndex:10, transition: "box-shadow 250ms ease"}}>
           <img src={project.image} alt={project.title} 
           className='h-full w-full object-contain drop-shadow-2xl'
@@ -127,7 +133,7 @@ function Projects() {
           </div>
          ))}
         </div>
-        <div className={`absolute ${isMobile ? "bottom-20" : "bottom-10"}`}>
+        <div className={`absolute z-30 ${isMobile ? "bottom-6" : "bottom-10"}`}>
           <a href={activeProject?.link} 
           target='_blank'
           rel='noopener noreferrer'
