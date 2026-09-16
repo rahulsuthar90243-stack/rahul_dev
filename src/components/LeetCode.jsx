@@ -42,7 +42,7 @@ function normaliseProfile(profile = {}) {
  */
 export default function LeetCode({
   username = import.meta.env.VITE_LEETCODE_USERNAME,
-  endpoint = "http://localhost:4000/api/leetcode",
+  endpoint = "/api/leetcode",
   className = "",
 }) {
   const [stats, setStats] = useState(null);

@@ -12,7 +12,7 @@ const emptyStats = {
 
 export default function Github({
 	username = "rahulsuthar90243-stack",
-	endpoint = "http://localhost:4000/api/github",
+	endpoint = "/api/github",
 	className = "",
 }) {
 	const [stats, setStats] = useState(null);
