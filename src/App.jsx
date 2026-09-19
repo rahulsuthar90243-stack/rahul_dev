@@ -9,12 +9,13 @@ import CustomCursor from "./components/CustomCursor"
 import { useState } from "react"
 import IntroAnimation from "./components/IntroAnimation"
 import GitandLettcdoePage from "./section/GitandLettcdoePage"
+import Footer from "./section/Footer"
 
 
 
 function App() {
 
-  const [introDone, setIntroDone] = useState(true);
+  const [introDone, setIntroDone] = useState(false);
 
   return (
 
@@ -31,6 +32,7 @@ function App() {
   <Experience/>
   {/* <Testimonials/> */}
   <Contact/>
+  <Footer/>
   </div>
   )}
   </>
