@@ -18,21 +18,22 @@ function OverlayMenu({ isOpen, onClose }) {
         >
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 text-white text-3xl"
+            className="absolute top-6 right-6 text-white text-3xl cursor-pointer hover:text-4xl duration-300"
             aria-label="Close Menu"
           >
             <IoMdClose />
           </button>
 
-          <ul className="space-y-6 text-center">
+          <ul className="space-y-6 text-center"
+          onClick={onClose}>
             {[
               "Home",
               "About",
               "Skills",
               "Projects",
               "Experience",
-              "Testimonials",
               "Contact",
+              "Footer"
             ].map((item, index) => (
               <motion.li
                 key={item}
@@ -42,7 +43,7 @@ function OverlayMenu({ isOpen, onClose }) {
               >
                 <a
                   href={`#${item.toLowerCase()}`}
-                  className="text-4xl text-white font-semibold hover:text-pink-400 transition-colors duration-300"
+                  className="text-4xl text-white font-semibold hover:text-blue-400 transition-colors duration-300"
                 >
                   {item}
                 </a>
