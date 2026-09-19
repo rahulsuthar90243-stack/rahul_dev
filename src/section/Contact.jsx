@@ -146,9 +146,9 @@ export default function ContactPage({ onSubmit }) {
   }
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-[#03050A] px-4 py-14 font-sans text-slate-100 sm:px-8 md:px-12 lg:px-[6vw] lg:py-16">
+    <div id="contact" className="relative min-h-screen w-full overflow-hidden bg-[#03050A] px-4 py-14 font-sans text-slate-100 sm:px-8 md:px-12 lg:px-[6vw] lg:py-16">
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] bg-[#000e27] [clip-path:polygon(0_23%,100%_0,100%_100%,0_100%)]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] bg-[#000b1f] [clip-path:polygon(0_23%,100%_0,100%_100%,0_100%)]"
         aria-hidden="true"
       />
       <ParticlesBackground/>
