@@ -83,13 +83,13 @@ function About() {
 
             <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-3 justify-center sm:justify-start">
               <a
-                href="#Project"
+                href="#projects"
                 className="inline-flex items-center justify-center rounded-lg bg-white text-black font-semibold px-5 py-3 hover:bg-gray-200 transition"
               >
                 View Project
               </a>
               <a
-                href="#contect"
+                href="#contact"
                 className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white px-5 py-3 hover:bg-white/20 transition"
               >
                 Get in Touch

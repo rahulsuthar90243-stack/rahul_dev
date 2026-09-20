@@ -21,13 +21,15 @@ app.use("/api/github", githubRouter);
 app.use("/api/contact", contectRouter);
 
 const startServer = async () => {
-  await connectDB();
   app.listen(port, () => {
     console.log(`LeetCode backend running at http://localhost:${port}`);
   });
+
+  try {
+    await connectDB();
+  } catch (error) {
+    console.error("Backend database connection failed:", error.message);
+  }
 };
 
-startServer().catch((error) => {
-  console.error("Backend startup failed:", error.message);
-  process.exitCode = 1;
-});
+startServer();
