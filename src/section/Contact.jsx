@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ParticlesBackground from "../components/ParticlesBackground"
 
-const API_ENDPOINT = "http://localhost:4000/api/contact";
+const API_ENDPOINT = "/api/contact";
 
 const SERVICE_OPTIONS = [
   "Web Development",
