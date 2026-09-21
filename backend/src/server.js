@@ -20,16 +20,33 @@ app.use("/api/leetcode", leetcodeRouter);
 app.use("/api/github", githubRouter);
 app.use("/api/contact", contectRouter);
 
-const startServer = async () => {
-  app.listen(port, () => {
-    console.log(`LeetCode backend running at http://localhost:${port}`);
+
+export default app;
+
+// Vercel sets VERCEL for deployed and preview functions.
+if (!process.env.VERCEL) {
+  app.listen(port, async () => {
+    console.log(`Backend running at http://localhost:${port}`);
+
+    try {
+      await connectDB();
+      console.log("Database connected");
+    } catch (error) {
+      console.error("Database connection failed:", error.message);
+    }
   });
+}
 
-  try {
-    await connectDB();
-  } catch (error) {
-    console.error("Backend database connection failed:", error.message);
-  }
-};
+// const startServer = async () => {
+//   app.listen(port, () => {
+//     console.log(`LeetCode backend running at http://localhost:${port}`);
+//   });
 
-startServer();
+//   try {
+//     await connectDB();
+//   } catch (error) {
+//     console.error("Backend database connection failed:", error.message);
+//   }
+// };
+
+// startServer();
