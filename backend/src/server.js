@@ -18,7 +18,7 @@ app.get("/health", (_request, response) => {
 
 app.use("/api/leetcode", leetcodeRouter);
 app.use("/api/github", githubRouter);
-app.use("/api/contact", contectRouter);
+app.use("/api/contect", contectRouter);
 
 
 export default app;
