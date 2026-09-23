@@ -12,7 +12,7 @@ const emptyStats = {
 
 export default function Github({
 	username = "rahulsuthar90243-stack",
-	endpoint = "/api/github",
+	endpoint = `${import.meta.env.VITE_SERVER_API_URL ?? ""}/api/github`,
 	className = "",
 }) {
 	const [stats, setStats] = useState(null);

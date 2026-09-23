@@ -1,4 +1,5 @@
 import { useEffect, useId, useState } from "react";
+// import "dotenv/config";
 
 const toNumber = (value) => (value == null || value === "" ? null : (Number.isFinite(Number(value)) ? Number(value) : null));
 
@@ -42,9 +43,9 @@ function normaliseProfile(profile = {}) {
  */
 export default function LeetCode({
   username = import.meta.env.VITE_LEETCODE_USERNAME,
-  endpoint = "/api/leetcode",
+  endpoint = `${import.meta.env.VITE_SERVER_API_URL ?? ""}/api/leetcode`,
   className = "",
-}) {
+}) { 
   const [stats, setStats] = useState(null);
   const [status, setStatus] = useState("loading");
   const [error, setError] = useState("");
