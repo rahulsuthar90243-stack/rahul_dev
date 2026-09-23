@@ -1,47 +1,59 @@
-# Rahul Suthar — Developer Portfolio
+# Rahul Suthar | Developer Portfolio
 
-A modern, responsive developer portfolio built with React and Vite. It showcases projects, technical skills, and live coding activity from GitHub and LeetCode.
+Personal portfolio website for Rahul Suthar, built with React and Vite. The site presents work, skills, experience, projects, contact information, and live GitHub and LeetCode statistics.
 
 ## Features
 
-- Responsive and modern portfolio interface
-- Project showcase section
-- Skills and technology overview
-- Live GitHub statistics
-- Live LeetCode profile statistics
-- Express backend proxy for LeetCode GraphQL requests
-- Reusable React components
-- Fast development with Vite and Hot Module Replacement
+- Responsive portfolio sections with smooth in-page navigation
+- Intro animation, custom cursor, motion effects, and particle backgrounds
+- Project, skills, experience, testimonials, and contact sections
+- Live GitHub repository, contribution, and language statistics
+- Live LeetCode profile and problem-solving statistics
+- Contact form backed by Express and MongoDB
+- Vite development server with an `/api` proxy to the backend
 
-## Tech Stack
+## Stack
 
-- React
-- Vite
-- JavaScript
-- CSS
-- Express.js
-- GitHub API
+- React 19 and JavaScript
+- Vite 8
+- Tailwind CSS 4
+- Framer Motion
+- React Icons
+- Express 5
+- MongoDB with Mongoose
+- GitHub GraphQL API
 - LeetCode GraphQL API
 
 ## Project Structure
 
 ```text
 React_Portfolio_Project/
-├── backend/              # Express backend and API routes
-├── public/               # Public static assets
+├── api/                  # Serverless entry point for deployment
+├── backend/
+│   ├── src/
+│   │   ├── controllers/  # GitHub and LeetCode API handlers
+│   │   ├── DB/           # MongoDB connection
+│   │   ├── models/       # Mongoose models
+│   │   ├── routers/      # Express API routes
+│   │   └── server.js     # Express application
+│   └── package.json
 ├── src/
-│   ├── assets/           # Images and project assets
-│   ├── components/       # Reusable React components
-│   ├── App.jsx           # Main application component
-│   └── main.jsx          # Application entry point
+│   ├── assets/           # Images and other assets
+│   ├── components/       # Reusable UI and data components
+│   ├── section/          # Portfolio page sections
+│   ├── App.jsx           # Application composition
+│   └── main.jsx          # React entry point
+├── index.html
 ├── package.json
-└── README.md
+└── vite.config.js
 ```
 
 ## Requirements
 
-- Node.js 18 or later
+- Node.js 18 or newer
 - npm
+- A MongoDB database for contact submissions
+- A GitHub personal access token with permission to read the required GraphQL data
 
 ## Installation
 
@@ -49,97 +61,91 @@ React_Portfolio_Project/
 git clone https://github.com/rahulsuthar90243-stack/rahul_dev.git
 cd React_Portfolio_Project
 npm install
+cd backend
+npm install
+cd ..
 ```
 
-## Environment Configuration
+## Environment Variables
 
-Create the backend environment file:
-
-### Windows
-
-```powershell
-Copy-Item backend\.env.example backend\.env
-```
-
-### macOS/Linux
-
-```bash
-cp backend/.env.example backend/.env
-```
-
-Configure `backend/.env`:
+Create `backend/.env` with server-side values. Never commit this file or expose these values in the frontend.
 
 ```env
-LEETCODE_USERNAME=your_leetcode_username
 PORT=4000
+LEETCODE_USERNAME=your_leetcode_username
+LEETCODE_ENDPOINT=https://leetcode.com/graphql/
+GITHUB_USERNAME=your_github_username
+GITHUB_TOKEN=your_github_personal_access_token
+MONGODB_URL=mongodb+srv://username:password@cluster.mongodb.net
+DB_NAME=your_database_name
 ```
 
-Do not commit `.env` files or private credentials to the repository.
+The frontend uses relative `/api` URLs by default. For a separately hosted backend, you can optionally define a Vite variable before building:
 
-## Running the Project
+```env
+VITE_SERVER_API_URL=https://your-backend.example.com
+```
 
-Start the backend server:
+Only variables prefixed with `VITE_` are available to browser code. Keep GitHub tokens, MongoDB credentials, and other private values in the backend environment.
+
+## Development
+
+Start the backend in one terminal:
 
 ```bash
 npm run dev:backend
 ```
 
-In a separate terminal, start the frontend:
+Start the Vite frontend in another terminal:
 
 ```bash
 npm run dev
 ```
 
-Vite proxies API requests to:
+Open the URL printed by Vite, usually `http://localhost:5173`.
 
-```text
-http://localhost:4000
+For backend watch mode, run this from the project root:
+
+```bash
+npm --prefix backend run dev
 ```
 
-## API Endpoints
+The Vite server proxies `/api` requests to `http://localhost:4000`.
 
-- `GET /api/github`
-- `GET /api/domy_api/leetcode`
+## API Routes
 
-LeetCode data is fetched through the Express backend to avoid browser CORS restrictions. The frontend requests:
+| Method | Route | Purpose |
+| --- | --- | --- |
+| `GET` | `/health` | Backend health check |
+| `GET` | `/api/github` | GitHub statistics; accepts `?username=` |
+| `GET` | `/api/leetcode` | LeetCode statistics; accepts `?username=` |
+| `GET` | `/api/contect` | Read saved contact submissions |
+| `POST` | `/api/contect` | Save a contact submission |
 
-```text
-/api/domy_api/leetcode
-```
+The GitHub and LeetCode routes call their external APIs from the backend so private credentials are not sent to the browser.
 
-You can configure the default LeetCode account through `backend/.env`, pass a `username` prop to the component, or provide a username through the backend route.
-
-## Production Build
-
-Create an optimized production build:
+## Build and Lint
 
 ```bash
 npm run build
-```
-
-Preview the production build locally:
-
-```bash
+npm run lint
 npm run preview
 ```
 
+`npm run preview` serves the latest production build locally.
+
 ## Troubleshooting
 
-- Ensure both frontend and backend servers are running.
-- Restart the servers after changing environment variables.
-- Confirm that port `4000` is available.
-- Check the backend terminal for API errors.
-- Verify the GitHub and LeetCode usernames.
-- Confirm that `/api` requests are correctly proxied to the backend.
+- Start both the frontend and backend during local development.
+- Confirm `backend/.env` exists and contains `GITHUB_TOKEN` and `LEETCODE_USERNAME`.
+- Check `http://localhost:4000/health` to verify the backend is running.
+- If API requests return `404`, confirm the frontend is using `/api/...` and that Vite is running with the proxy configuration.
+- If contact submissions fail, verify `MONGODB_URL`, `DB_NAME`, and MongoDB network access.
+- Restart the backend after changing environment variables.
 
 ## Deployment
 
-Before deployment:
-
-1. Configure production environment variables.
-2. Build the frontend using `npm run build`.
-3. Deploy the frontend and backend.
-4. Update API URLs or proxy settings for the production environment.
+Build the frontend with `npm run build`, then deploy the generated `dist/` directory and the backend. Configure all server environment variables in the deployment provider. The `api/index.js` entry point can be used by platforms that support serverless Node functions.
 
 ## License
 
