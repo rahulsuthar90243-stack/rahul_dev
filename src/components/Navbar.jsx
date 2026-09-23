@@ -64,7 +64,7 @@ function Navbar() {
 
         <div className="hidden lg:block absolute right-6 top-1/2 -translate-y-1/2 mt-4">
           <a
-            href="#contect"
+            href="#contact"
             className="bg-gradient-to-r from-pink-500 to-blue-500 text-white px-5 py-2 rounded-full font-medium shadow-lg hover:opacity-90 transition-opacity duration-300"
           >
             Reach Out
