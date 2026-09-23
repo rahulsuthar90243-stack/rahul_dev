@@ -6,8 +6,8 @@ import profile from "../assets/profile.png"
 function About() {
 
   const stats = [
-    {label: "Experience", value: "3+ Month"},
-    {label: "Speciality", value: "Full Stack"},
+    {label: "Experience", value: "3+ Months"},
+    {label: "Specialty", value: "Full Stack"},
     {label: "Focus", value: "Performance & AI Automation"}
   ]
 
@@ -86,7 +86,7 @@ function About() {
                 href="#projects"
                 className="inline-flex items-center justify-center rounded-lg bg-white text-black font-semibold px-5 py-3 hover:bg-gray-200 transition"
               >
-                View Project
+                View Projects
               </a>
               <a
                 href="#contact"

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ParticlesBackground from "../components/ParticlesBackground"
 
-const API_ENDPOINT = `${import.meta.env.VITE_SERVER_API_URL ?? ""}/api/contect`;
+const API_ENDPOINT = `${import.meta.env.VITE_SERVER_API_URL ?? ""}/api/contact`;
 
 const SERVICE_OPTIONS = [
   "Web Development",
@@ -257,7 +257,7 @@ export default function ContactPage({ onSubmit }) {
               />
             </Field>
 
-            <Field label="Explain your Idea" required error={touched.message && errors.message}>
+            <Field label="Describe your Idea" required error={touched.message && errors.message}>
               <textarea
                 name="message"
                 rows={4}

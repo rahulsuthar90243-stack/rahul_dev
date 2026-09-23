@@ -118,7 +118,7 @@ function Skills() {
         initial={{opacity:0, y: -30}}
         whileInView={{opacity:1, y:0}}
         >
-          my Skills
+          My Skills
         </motion.h2>
         <motion.p className='mt-2 mb-8 text-white/90 text-base sm:text-lg z-10'
         initial={{opacity:0, y: -10}}

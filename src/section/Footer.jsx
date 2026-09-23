@@ -8,12 +8,12 @@ const socials = [
   { Icon: FaXTwitter, label: "x", href: "https://x.com/rahulsuthar_" },
   {
     Icon: FaLinkedin,
-    label: "Linkedin",
+    label: "LinkedIn",
     href: "https://www.linkedin.com/in/rahul-suthar-41364330a/",
   },
   {
     Icon: FaGithub,
-    label: "Github",
+    label: "GitHub",
     href: "https://github.com/rahulsuthar90243-stack",
   },
 ];
@@ -80,7 +80,7 @@ function Footer() {
       ))}
      </div>
       <p className='text-gray-400 italic max-w-xl'>
-        "The most certion way to success is always try just one more time."
+        "The most certain way to succeed is to always try just one more time."
       </p>
       <p className='text-xs text-gray-400'>
        &copy; {new Date().getFullYear()} Rahul Suthar. All rights reserved.

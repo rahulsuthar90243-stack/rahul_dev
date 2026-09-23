@@ -8,12 +8,12 @@ const socials = [
   { Icon: FaXTwitter, label: "x", href: "https://x.com/rahulsuthar_" },
   {
     Icon: FaLinkedin,
-    label: "Linkedin",
+    label: "LinkedIn",
     href: "https://www.linkedin.com/in/rahul-suthar-41364330a/",
   },
   {
     Icon: FaGithub,
-    label: "Github",
+    label: "GitHub",
     href: "https://github.com/rahulsuthar90243-stack",
   },
 ];
@@ -129,8 +129,8 @@ function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            I trun complex ideas into seamless, high-impact web experience -
-            building modern, scalable, and lighning-fact application that make a
+            I turn complex ideas into seamless, high-impact web experiences,
+            building modern, scalable, and lightning-fast applications that make a
             difference.
           </motion.p>
 
