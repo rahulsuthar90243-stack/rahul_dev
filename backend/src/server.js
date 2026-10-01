@@ -12,7 +12,7 @@ const port = Number(process.env.PORT) || 4000;
 app.use(cors());  // Enable CORS for all routes
 app.use(express.json());
 
-app.get("/health", (_request, response) => {
+app.get("/", (_request, response) => {
   response.json({ ok: true });
 });
 
